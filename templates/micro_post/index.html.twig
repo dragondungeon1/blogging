@@ -3,13 +3,14 @@
 {% block title %}MicroPost index{% endblock %}
 
 {% block body %}
-    <a class="btn btn-primary" href="{{ path('micro_post_new') }}">post iets nieuws</a>
+    <a class="btn align-content-center btn-primary" href="{{ path('micro_post_new') }}">post iets nieuws</a>
     <div class="container">
-        <div class="d-flex flex-column-reverse">
+        <div class="d-flex flex-column ">
             {% for micro_post in micro_posts %}
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ micro_post.subject }}</h5>
+                        <h5 class="card-title">{{ micro_post.user.name }}</h5>
+                        <p class="card-title">{{ micro_post.subject }}</p>
                         <p class="card-text">
                             {{ micro_post.text }}
                         </p>

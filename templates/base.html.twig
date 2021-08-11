@@ -6,7 +6,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Roboto+Mono:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Roboto+Mono:ital@1&display=swap"
+          rel="stylesheet">
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -29,9 +30,9 @@
                         <a class="nav-link active" aria-current="page" href="{{ '/' }}">Home</a>
                     </li>
                     {% if app.user %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ '/micropost' }}">Posts</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ '/micropost' }}">Posts</a>
+                        </li>
                     {% endif %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -58,10 +59,26 @@
                         </li>
                     {% endif %}
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+
+                {% if app.user %}
+                    <form class="d-flex me-5">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+
+                    <p style=" color:#f3911d;font-family: 'Comfortaa', cursive;" class="me-3 mt-3 username">
+                        @{{ app.user.name }}
+                    </p>
+                {% else %}
+                    <a class="btn btn-warning" href="{{ '/register' }}">Register</a> &nbsp;
+                {% endif %}
+                <style>
+                    .username p{
+                        font-family: 'Comfortaa', cursive !important;
+                        font-size: 32px;
+                        color: #f3911d !important;
+                    }
+                </style>
             </div>
         </div>
     </nav>

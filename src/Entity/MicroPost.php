@@ -27,6 +27,11 @@ class MicroPost
      */
     private $subject;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="post")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,5 +59,25 @@ class MicroPost
         $this->subject = $subject;
 
         return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 }

@@ -7,7 +7,8 @@
         <a class="btn btn-primary" href="{{ path('micro_post_index') }}">back to list</a>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{ micro_post.subject }}</h5>
+                <h5 class="card-title">{{ micro_post.user.name }}</h5>
+                <p class="card-title">{{ micro_post.subject }}</p>
                 <p class="card-text">
                     {{ micro_post.text }}
                 </p>
@@ -26,8 +27,7 @@
     </style>
 
 
-
-    {# <a href="{{ path('micro_post_edit', {'id': micro_post.id}) }}">edit</a> #}
+     <a href="{{ path('micro_post_edit', {'id': micro_post.id}, {'user': micro_post.user}) }}">edit</a>
     {# {{ include('micro_post/_delete_form.html.twig') }} #}
     {# may be usefull later #}
 

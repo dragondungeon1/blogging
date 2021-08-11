@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\MicroPost;
 use App\Form\MicroPostType;
 use App\Repository\MicroPostRepository;
+use App\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +19,8 @@ class MicroPostController extends AbstractController
 {
     /**
      * @Route("/", name="micro_post_index", methods={"GET"})
+     * @param MicroPostRepository $microPostRepository
+     * @return Response
      */
     public function index(MicroPostRepository $microPostRepository): Response
     {
@@ -27,6 +31,8 @@ class MicroPostController extends AbstractController
 
     /**
      * @Route("/new", name="micro_post_new", methods={"GET","POST"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+
      */
     public function new(Request $request): Response
     {
@@ -60,6 +66,7 @@ class MicroPostController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="micro_post_edit", methods={"GET","POST"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function edit(Request $request, MicroPost $microPost): Response
     {
@@ -80,6 +87,7 @@ class MicroPostController extends AbstractController
 
     /**
      * @Route("/{id}", name="micro_post_delete", methods={"POST"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function delete(Request $request, MicroPost $microPost): Response
     {
