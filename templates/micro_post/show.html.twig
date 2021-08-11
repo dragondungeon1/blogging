@@ -3,15 +3,28 @@
 {% block title %}MicroPost{% endblock %}
 
 {% block body %}
-    <a class="btn btn-primary" href="{{ path('micro_post_index') }}">back to list</a>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">{{ micro_post.subject }}</h5>
-            <p class="card-text">
-                {{ micro_post.text }}
-            </p>
+    <div class="container">
+        <a class="btn btn-primary" href="{{ path('micro_post_index') }}">back to list</a>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ micro_post.subject }}</h5>
+                <p class="card-text">
+                    {{ micro_post.text }}
+                </p>
+            </div>
         </div>
     </div>
+
+    <style>
+        .card-title , .card-text {
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .btn , .btn-primary {
+            font-family: 'Share Tech Mono', monospace !important;
+        }
+    </style>
+
 
 
     {# <a href="{{ path('micro_post_edit', {'id': micro_post.id}) }}">edit</a> #}

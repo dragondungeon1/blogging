@@ -6,15 +6,17 @@ body {
     background-color: #22e62f !important;
     border: red !important;
     color: white !important;
-}
-
-
+    }
 
 .btn-primary:active{
     background-color: #cf11cb !important;
     border: red !important;
     color: white !important;
 
+}
+
+.navbar a {
+    font-family: 'Comfortaa', cursive !important;
 }
 
 
