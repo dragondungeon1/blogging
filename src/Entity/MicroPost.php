@@ -32,6 +32,17 @@ class MicroPost
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date;
+
+    public function __toString()
+    {
+        return $this->date;
+
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -80,4 +91,18 @@ class MicroPost
     {
         $this->id = $id;
     }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+
 }

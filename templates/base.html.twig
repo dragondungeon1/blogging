@@ -33,21 +33,25 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ '/micropost' }}">Posts</a>
                         </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="btn align-content-center btn-primary" href="{{ path('micro_post_new') }}">post
+                                        iets nieuws</a>
+                                </li>
+
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
                     {% endif %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
                     {% if app.user %}
                         <li class="nav-item">
                             <a class="nav-link btn btn-primary" href="{{ '/logout' }}">Logout </a>
@@ -73,7 +77,7 @@
                     <a class="btn btn-warning" href="{{ '/register' }}">Register</a> &nbsp;
                 {% endif %}
                 <style>
-                    .username p{
+                    .username p {
                         font-family: 'Comfortaa', cursive !important;
                         font-size: 32px;
                         color: #f3911d !important;

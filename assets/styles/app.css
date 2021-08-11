@@ -3,8 +3,8 @@ body {
 }
 
 .btn-primary{
-    background-color: #22e62f !important;
-    border: red !important;
+    background-color: #f3911d !important;
+    border: #f3911d !important;
     color: white !important;
     }
 
@@ -12,6 +12,7 @@ body {
     background-color: #cf11cb !important;
     border: red !important;
     color: white !important;
+    transition: 0.1ms !important ;
 
 }
 

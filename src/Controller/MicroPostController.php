@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\MicroPost;
+use App\Entity\User;
 use App\Form\MicroPostType;
 use App\Repository\MicroPostRepository;
 use App\Repository\UserRepository;
@@ -38,6 +39,9 @@ class MicroPostController extends AbstractController
     {
         $microPost = new MicroPost();
         $form = $this->createForm(MicroPostType::class, $microPost);
+        $microPost->setDate(new \DateTime('now'));
+        $user = $this->getUser();
+        $microPost->setUser($user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
