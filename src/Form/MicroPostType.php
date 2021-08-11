@@ -12,8 +12,8 @@ class MicroPostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text')
             ->add('subject')
+            ->add('text')
         ;
     }
 

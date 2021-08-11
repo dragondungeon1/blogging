@@ -3,9 +3,22 @@
 {% block title %}New MicroPost{% endblock %}
 
 {% block body %}
-    <h1>Create new MicroPost</h1>
+    <div class="container w-25">
+        <h3>Create new MicroPost</h3>
 
-    {{ include('micro_post/_form.html.twig') }}
+        {{ include('micro_post/_form.html.twig') }}
 
-    <a class="btn btn-info" href="{{ path('micro_post_index') }}">back to list</a>
+        <a class="btn btn-info" href="{{ path('micro_post_index') }}">back to list</a>
+    </div>
+
+    <style>
+        .btn , .btn-info {
+            font-family: 'Share Tech Mono', monospace !important;
+        }
+
+        h3{
+            font-family: 'Share Tech Mono', monospace !important;
+        }
+    </style>
+
 {% endblock %}
