@@ -3,7 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\MicroPostRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+
 
 /**
  * @ORM\Entity(repositoryClass=MicroPostRepository::class)

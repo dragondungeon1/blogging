@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/micropost")
+ * @Route("/posts")
  */
 class MicroPostController extends AbstractController
 {
@@ -40,6 +40,7 @@ class MicroPostController extends AbstractController
         $microPost = new MicroPost();
         $form = $this->createForm(MicroPostType::class, $microPost);
         $microPost->setDate(new \DateTime('now'));
+        $microPost->setUpdatedAt(new \DateTime('now'));
         $user = $this->getUser();
         $microPost->setUser($user);
         $form->handleRequest($request);

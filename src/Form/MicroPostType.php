@@ -6,6 +6,7 @@ use App\Entity\MicroPost;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class MicroPostType extends AbstractType
 {
@@ -14,6 +15,10 @@ class MicroPostType extends AbstractType
         $builder
             ->add('subject')
             ->add('text')
+            ->add('imageName')
+            ->add('imageSize')
+//            ->add('updatedAt')
+//            ->add('imageFile', VichImageType::class)
         ;
     }
 
