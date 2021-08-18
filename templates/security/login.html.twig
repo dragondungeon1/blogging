@@ -6,7 +6,7 @@
 <div class="d-flex justify-content-center">
     <h1 class="text-white">Welcome</h1>
 </div>
-    <div class="container w-25 text-center">
+    <div class="container w-25 text-center form-control">
         <form method="post">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

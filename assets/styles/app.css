@@ -23,15 +23,17 @@ nav{
     border-bottom: 1px solid #535d67 !important;
 }
 
-label {
-    color: white !important;
-}
-
 .card:hover {
     /*box-shadow: 0px 5px 0px 1px #f3911d !important;*/
-    background-color: #f3911d !important;
+    background-color: #212529 !important;
     color: white !important;
     transition: 0.3s ease-in;
+    border: 1px solid #f3911d;
+}
+
+
+.card-title , .card-text {
+    font-family: 'Share Tech Mono', monospace !important;
 }
 
 

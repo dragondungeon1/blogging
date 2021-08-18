@@ -5,7 +5,7 @@
 {% block body %}
     <div class="waves-banner">
         <div class="inner-waves">
-            <h1>Welcome</h1>
+            <h1>Welcome to BlogSource</h1>
         </div>
         <div>
             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -22,83 +22,129 @@
             </svg>
         </div>
     </div>
-
-    <div class="container text-center my-3">
-        <h2 class="font-weight-light">Bootstrap Multi Slide Carousel</h2>
-        <div class="row mx-auto my-auto justify-content-center">
-            <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="//via.placeholder.com/500x400/31f?text=1" class="img-fluid">
-                                </div>
-                                <div class="card-img-overlay">Slide 1</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="//via.placeholder.com/500x400/e66?text=2" class="img-fluid">
-                                </div>
-                                <div class="card-img-overlay">Slide 2</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="//via.placeholder.com/500x400/7d2?text=3" class="img-fluid">
-                                </div>
-                                <div class="card-img-overlay">Slide 3</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="//via.placeholder.com/500x400?text=4" class="img-fluid">
-                                </div>
-                                <div class="card-img-overlay">Slide 4</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="//via.placeholder.com/500x400/aba?text=5" class="img-fluid">
-                                </div>
-                                <div class="card-img-overlay">Slide 5</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="//via.placeholder.com/500x400/fc0?text=6" class="img-fluid">
-                                </div>
-                                <div class="card-img-overlay">Slide 6</div>
-                            </div>
-                        </div>
+    <div class="container text-center mt-3 ">
+        <div class="d-flex justify-content-between">
+            {% for micro_post in micro_posts|slice (0, 5) %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@{{ micro_post.user.name }}</h5>
+                        <p class="card-title">{{ micro_post.subject }}</p>
+                        <p>{{ micro_post.date |date('D d M-Y H:m') }}</p>
+                        <p class="card-text">
+                            {{ micro_post.text }}
+                        </p>
+                        <a class="btn btn-primary" href="{{ path('micro_post_show', {'id': micro_post.id}) }}">view</a>
                     </div>
                 </div>
-                <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </a>
-                <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </a>
+                <br>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-lg-end justify-content-sm-center pt-5 pt-sm-5 pt-md-0"
+                 data-aos="fade-left">
+                <img style="width: 60%;" src="{{ asset('images/blog.svg') }}" alt="vrouw">
+            </div>
+            <div class="col-12 col-sm-12 col-md-6">
+                <h1 class="text-white">Make your first post</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur.</p>
+                <a href="{{ '/posts/new' }}" class="btn btn-primary btn-p">start now!</a>
             </div>
         </div>
-        <h5 class="mt-2 fw-light">advances one slide at a time</h5>
+
     </div>
+
+
+{#    <div class="container text-center my-3">#}
+{#        <h2 class="font-weight-light text-white">Bootstrap Multi Slide Carousel</h2>#}
+{#        <div class="row mx-auto my-auto justify-content-center">#}
+{#            <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">#}
+{#                <div class="carousel-inner" role="listbox">#}
+{#                    <div class="carousel-item active">#}
+{#                        <div class="col-md-3">#}
+{#                            <div class="card">#}
+{#                                <div class="card-img">#}
+{#                                    <img src="//via.placeholder.com/500x400/31f?text=1" class="img-fluid">#}
+{#                                </div>#}
+{#                                <div class="card-img-overlay">Slide 1</div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="carousel-item">#}
+{#                        <div class="col-md-3">#}
+{#                            <div class="card">#}
+{#                                <div class="card-img">#}
+{#                                    <img src="//via.placeholder.com/500x400/e66?text=2" class="img-fluid">#}
+{#                                </div>#}
+{#                                <div class="card-img-overlay">Slide 2</div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="carousel-item">#}
+{#                        <div class="col-md-3">#}
+{#                            <div class="card">#}
+{#                                <div class="card-img">#}
+{#                                    <img src="//via.placeholder.com/500x400/7d2?text=3" class="img-fluid">#}
+{#                                </div>#}
+{#                                <div class="card-img-overlay">Slide 3</div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="carousel-item">#}
+{#                        <div class="col-md-3">#}
+{#                            <div class="card">#}
+{#                                <div class="card-img">#}
+{#                                    <img src="//via.placeholder.com/500x400?text=4" class="img-fluid">#}
+{#                                </div>#}
+{#                                <div class="card-img-overlay">Slide 4</div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="carousel-item">#}
+{#                        <div class="col-md-3">#}
+{#                            <div class="card">#}
+{#                                <div class="card-img">#}
+{#                                    <img src="//via.placeholder.com/500x400/aba?text=5" class="img-fluid">#}
+{#                                </div>#}
+{#                                <div class="card-img-overlay">Slide 5</div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="carousel-item">#}
+{#                        <div class="col-md-3">#}
+{#                            <div class="card">#}
+{#                                <div class="card-img">#}
+{#                                    <img src="//via.placeholder.com/500x400/fc0?text=6" class="img-fluid">#}
+{#                                </div>#}
+{#                                <div class="card-img-overlay">Slide 6</div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">#}
+{#                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
+{#                </a>#}
+{#                <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">#}
+{#                    <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
+{#                </a>#}
+{#            </div>#}
+{#        </div>#}
+{#        <h5 class="mt-2 fw-light text-white">advances one slide at a time</h5>#}
+{#    </div>#}
+
+
 
 
 {% endblock %}

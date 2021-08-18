@@ -31,6 +31,22 @@ class MicroPostController extends AbstractController
     }
 
     /**
+     * @Route("/jemoer", name="user_posts", methods={"GET"})
+     * @param UserRepository $userRepository
+     * @return Response
+     */
+    public function userPosts( UserRepository $userRepository): Response
+    {
+        $user = $this->getUser();
+        return $this->render('micro_post/userPosts.html.twig', [
+            'user_posts' => $userRepository->findAll(),
+            'user'=> $userRepository->findAll(),
+        ]);
+    }
+
+
+
+    /**
      * @Route("/new", name="micro_post_new", methods={"GET","POST"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
 
@@ -40,7 +56,7 @@ class MicroPostController extends AbstractController
         $microPost = new MicroPost();
         $form = $this->createForm(MicroPostType::class, $microPost);
         $microPost->setDate(new \DateTime('now'));
-        $microPost->setUpdatedAt(new \DateTime('now'));
+//        $microPost->setUpdatedAt(new \DateTime('now'));
         $user = $this->getUser();
         $microPost->setUser($user);
         $form->handleRequest($request);
@@ -61,6 +77,8 @@ class MicroPostController extends AbstractController
 
     /**
      * @Route("/{id}", name="micro_post_show", methods={"GET"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+
      */
     public function show(MicroPost $microPost): Response
     {

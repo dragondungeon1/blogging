@@ -15,8 +15,8 @@ class MicroPostType extends AbstractType
         $builder
             ->add('subject')
             ->add('text')
-            ->add('imageName')
-            ->add('imageSize')
+//            ->add('imageName')
+//            ->add('imageSize')
 //            ->add('updatedAt')
 //            ->add('imageFile', VichImageType::class)
         ;

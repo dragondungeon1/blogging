@@ -15,22 +15,21 @@
                     {{ micro_post.text }}
                 </p>
             </div>
-            <a class="btn btn-primary" href="{{ path('micro_post_edit', {'id': micro_post.id}, {'user': micro_post.user}) }}">edit</a>
+             {% if micro_post.user.id == app.user.id  %}
+                     <a class="btn btn-primary" href="{{ path('micro_post_edit', {'id': micro_post.id}) }}">edit</a>
+                    {{ include('micro_post/_delete_form.html.twig') }}
+             {% endif %}
         </div>
     </div>
 
     <style>
-        .card-title , .card-text {
-            font-family: 'Share Tech Mono', monospace;
-        }
-
         .btn , .btn-primary {
             font-family: 'Share Tech Mono', monospace !important;
         }
     </style>
 
 
-    {# {{ include('micro_post/_delete_form.html.twig') }} #}
+
     {# may be usefull later #}
 
 {% endblock %}
