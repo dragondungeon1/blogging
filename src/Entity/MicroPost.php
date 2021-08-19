@@ -32,16 +32,21 @@ class MicroPost
      * @ORM\Column(type="string", length=20)
      */
     private $subject;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="post")
-     */
-    private $user;
+//
+//    /**
+//     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="post")
+//     */
+//    private $user;
 
     /**
      * @ORM\Column(type="datetime")
      */
     private $date;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="posts")
+     */
+    private $user;
 
     public function __toString()
     {
@@ -79,17 +84,17 @@ class MicroPost
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
+//    public function getUser(): ?User
+//    {
+//        return $this->user;
+//    }
+//
+//    public function setUser(?User $user): self
+//    {
+//        $this->user = $user;
+//
+//        return $this;
+//    }
 
     /**
      * @param mixed $id
@@ -208,6 +213,18 @@ class MicroPost
 //    {
 //        $this->updatedAt = $updatedAt;
 //    }
+
+public function getUser(): ?User
+{
+    return $this->user;
+}
+
+public function setUser(?User $user): self
+{
+    $this->user = $user;
+
+    return $this;
+}
 
 
 }

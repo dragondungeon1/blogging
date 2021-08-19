@@ -43,8 +43,11 @@
                                 <li><a class="btn align-content-center btn-primary" href="{{ path('micro_post_new') }}">post
                                         iets nieuws</a>
                                 </li>
-
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                {% if app.user %}
+                                <li><a class="dropdown-item" href="{{ path('micro_post_you') }}">your posts</a></li>
+                                {% else %}
+                                <li><a class="dropdown-item" href="#">action</a></li>
+                                {% endif %}
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

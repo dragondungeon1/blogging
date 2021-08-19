@@ -6,12 +6,10 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -39,21 +37,26 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @ORM\OneToMany(targetEntity=MicroPost::class, mappedBy="user")
+     */
+    private $posts;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=MicroPost::class, mappedBy="user", orphanRemoval=true)
+     * @var bool
+     *
+     * @ORM\Column(name="is_verified", type="boolean")
      */
-    private $post;
-
+    private $isVerified = false;
 
     public function __construct()
     {
-        $this->post = new ArrayCollection();
+        $this->posts = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -136,6 +139,36 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
+    /**
+     * @return Collection|MicroPost[]
+     */
+    public function getPosts(): Collection
+    {
+        return $this->posts;
+    }
+
+    public function addPost(MicroPost $post): self
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+            $post->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(MicroPost $post): self
+    {
+        if ($this->posts->removeElement($post)) {
+            // set the owning side to null (unless already changed)
+            if ($post->getUser() === $this) {
+                $post->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
     public function getName(): ?string
     {
         return $this->name;
@@ -149,41 +182,20 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|MicroPost[]
+     * @return bool
      */
-    public function getPost(): Collection
+    public function isVerified(): bool
     {
-        return $this->post;
-    }
-
-    public function addPost(MicroPost $post): self
-    {
-        if (!$this->post->contains($post)) {
-            $this->post[] = $post;
-            $post->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removePost(MicroPost $post): self
-    {
-        if ($this->post->removeElement($post)) {
-            // set the owning side to null (unless already changed)
-            if ($post->getUser() === $this) {
-                $post->setUser(null);
-            }
-        }
-
-        return $this;
+        return $this->isVerified;
     }
 
     /**
-     * @param mixed $id
+     * @param bool $isVerified
      */
-    public function setId($id): void
+    public function setIsVerified(bool $isVerified): self
     {
-        $this->id = $id;
-    }
+        $this->isVerified = $isVerified;
 
+        return $this;
+    }
 }

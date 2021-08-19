@@ -6,6 +6,7 @@
     <div class="d-flex justify-content-center mt-2">
         <a class="btn text-center btn-primary" href="{{ path('micro_post_new') }}">post iets nieuws</a>
     </div>
+
     <div class="container w-25 text-center">
         <div class="d-flex flex-column-reverse ">
             {% for micro_post in micro_posts|slice (0, 5) %}

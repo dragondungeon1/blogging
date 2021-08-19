@@ -31,25 +31,24 @@ class MicroPostController extends AbstractController
     }
 
     /**
-     * @Route("/jemoer", name="user_posts", methods={"GET"})
+     * @Route("/you", name="micro_post_you", methods={"GET"})
+     * @param MicroPostRepository $microPostRepository
      * @param UserRepository $userRepository
      * @return Response
      */
-    public function userPosts( UserRepository $userRepository): Response
+    public function userPosts(MicroPostRepository $microPostRepository, UserRepository $userRepository): Response
     {
         $user = $this->getUser();
-        return $this->render('micro_post/userPosts.html.twig', [
-            'user_posts' => $userRepository->findAll(),
-            'user'=> $userRepository->findAll(),
+        $posts = $microPostRepository->findBy(['user' => $user]);
+        return $this->render('micro_post/you.html.twig', [
+            'micro_posts' => $posts,
         ]);
     }
-
 
 
     /**
      * @Route("/new", name="micro_post_new", methods={"GET","POST"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-
      */
     public function new(Request $request): Response
     {
@@ -78,7 +77,6 @@ class MicroPostController extends AbstractController
     /**
      * @Route("/{id}", name="micro_post_show", methods={"GET"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-
      */
     public function show(MicroPost $microPost): Response
     {
@@ -114,7 +112,7 @@ class MicroPostController extends AbstractController
      */
     public function delete(Request $request, MicroPost $microPost): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$microPost->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $microPost->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($microPost);
             $entityManager->flush();

@@ -11,39 +11,43 @@
             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                  viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
                 <defs>
-                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                    <path id="gentle-wave"
+                          d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
                 </defs>
                 <g class="parallax">
-                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7"/>
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)"/>
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)"/>
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff"/>
                 </g>
             </svg>
         </div>
     </div>
-    <div class="container text-center mt-3 ">
-        <div class="d-flex justify-content-between">
-            {% for micro_post in micro_posts|slice (0, 5) %}
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">@{{ micro_post.user.name }}</h5>
-                        <p class="card-title">{{ micro_post.subject }}</p>
-                        <p>{{ micro_post.date |date('D d M-Y H:m') }}</p>
-                        <p class="card-text">
-                            {{ micro_post.text }}
-                        </p>
-                        <a class="btn btn-primary" href="{{ path('micro_post_show', {'id': micro_post.id}) }}">view</a>
+    <section class="container">
+        <div class="text-center mt-3 ">
+            <div class="d-flex justify-content-between">
+                {% for micro_post in micro_posts|slice (0, 5) %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@{{ micro_post.user.name }}</h5>
+                            <p class="card-title">{{ micro_post.subject }}</p>
+                            <p>{{ micro_post.date |date('D d M-Y H:m') }}</p>
+                            <p class="card-text">
+                                {{ micro_post.text }}
+                            </p>
+                            <a class="btn btn-primary" href="{{ path('micro_post_show', {'id': micro_post.id}) }}">view</a>
+                        </div>
                     </div>
-                </div>
-                <br>
-            {% else %}
-                <tr>
-                    <td colspan="4">no records found</td>
-                </tr>
-            {% endfor %}
+                    <br>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    </section>
+
 
     <div class="container mt-4">
         <div class="row">
@@ -67,82 +71,82 @@
     </div>
 
 
-{#    <div class="container text-center my-3">#}
-{#        <h2 class="font-weight-light text-white">Bootstrap Multi Slide Carousel</h2>#}
-{#        <div class="row mx-auto my-auto justify-content-center">#}
-{#            <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">#}
-{#                <div class="carousel-inner" role="listbox">#}
-{#                    <div class="carousel-item active">#}
-{#                        <div class="col-md-3">#}
-{#                            <div class="card">#}
-{#                                <div class="card-img">#}
-{#                                    <img src="//via.placeholder.com/500x400/31f?text=1" class="img-fluid">#}
-{#                                </div>#}
-{#                                <div class="card-img-overlay">Slide 1</div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="carousel-item">#}
-{#                        <div class="col-md-3">#}
-{#                            <div class="card">#}
-{#                                <div class="card-img">#}
-{#                                    <img src="//via.placeholder.com/500x400/e66?text=2" class="img-fluid">#}
-{#                                </div>#}
-{#                                <div class="card-img-overlay">Slide 2</div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="carousel-item">#}
-{#                        <div class="col-md-3">#}
-{#                            <div class="card">#}
-{#                                <div class="card-img">#}
-{#                                    <img src="//via.placeholder.com/500x400/7d2?text=3" class="img-fluid">#}
-{#                                </div>#}
-{#                                <div class="card-img-overlay">Slide 3</div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="carousel-item">#}
-{#                        <div class="col-md-3">#}
-{#                            <div class="card">#}
-{#                                <div class="card-img">#}
-{#                                    <img src="//via.placeholder.com/500x400?text=4" class="img-fluid">#}
-{#                                </div>#}
-{#                                <div class="card-img-overlay">Slide 4</div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="carousel-item">#}
-{#                        <div class="col-md-3">#}
-{#                            <div class="card">#}
-{#                                <div class="card-img">#}
-{#                                    <img src="//via.placeholder.com/500x400/aba?text=5" class="img-fluid">#}
-{#                                </div>#}
-{#                                <div class="card-img-overlay">Slide 5</div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="carousel-item">#}
-{#                        <div class="col-md-3">#}
-{#                            <div class="card">#}
-{#                                <div class="card-img">#}
-{#                                    <img src="//via.placeholder.com/500x400/fc0?text=6" class="img-fluid">#}
-{#                                </div>#}
-{#                                <div class="card-img-overlay">Slide 6</div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">#}
-{#                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
-{#                </a>#}
-{#                <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">#}
-{#                    <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
-{#                </a>#}
-{#            </div>#}
-{#        </div>#}
-{#        <h5 class="mt-2 fw-light text-white">advances one slide at a time</h5>#}
-{#    </div>#}
+    {# <div class="container text-center my-3"> #}
+    {# <h2 class="font-weight-light text-white">Bootstrap Multi Slide Carousel</h2> #}
+    {# <div class="row mx-auto my-auto justify-content-center"> #}
+    {# <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel"> #}
+    {# <div class="carousel-inner" role="listbox"> #}
+    {# <div class="carousel-item active"> #}
+    {# <div class="col-md-3"> #}
+    {# <div class="card"> #}
+    {# <div class="card-img"> #}
+    {# <img src="//via.placeholder.com/500x400/31f?text=1" class="img-fluid"> #}
+    {# </div> #}
+    {# <div class="card-img-overlay">Slide 1</div> #}
+    {# </div> #}
+    {# </div> #}
+    {# </div> #}
+    {# <div class="carousel-item"> #}
+    {# <div class="col-md-3"> #}
+    {# <div class="card"> #}
+    {# <div class="card-img"> #}
+    {# <img src="//via.placeholder.com/500x400/e66?text=2" class="img-fluid"> #}
+    {# </div> #}
+    {# <div class="card-img-overlay">Slide 2</div> #}
+    {# </div> #}
+    {# </div> #}
+    {# </div> #}
+    {# <div class="carousel-item"> #}
+    {# <div class="col-md-3"> #}
+    {# <div class="card"> #}
+    {# <div class="card-img"> #}
+    {# <img src="//via.placeholder.com/500x400/7d2?text=3" class="img-fluid"> #}
+    {# </div> #}
+    {# <div class="card-img-overlay">Slide 3</div> #}
+    {# </div> #}
+    {# </div> #}
+    {# </div> #}
+    {# <div class="carousel-item"> #}
+    {# <div class="col-md-3"> #}
+    {# <div class="card"> #}
+    {# <div class="card-img"> #}
+    {# <img src="//via.placeholder.com/500x400?text=4" class="img-fluid"> #}
+    {# </div> #}
+    {# <div class="card-img-overlay">Slide 4</div> #}
+    {# </div> #}
+    {# </div> #}
+    {# </div> #}
+    {# <div class="carousel-item"> #}
+    {# <div class="col-md-3"> #}
+    {# <div class="card"> #}
+    {# <div class="card-img"> #}
+    {# <img src="//via.placeholder.com/500x400/aba?text=5" class="img-fluid"> #}
+    {# </div> #}
+    {# <div class="card-img-overlay">Slide 5</div> #}
+    {# </div> #}
+    {# </div> #}
+    {# </div> #}
+    {# <div class="carousel-item"> #}
+    {# <div class="col-md-3"> #}
+    {# <div class="card"> #}
+    {# <div class="card-img"> #}
+    {# <img src="//via.placeholder.com/500x400/fc0?text=6" class="img-fluid"> #}
+    {# </div> #}
+    {# <div class="card-img-overlay">Slide 6</div> #}
+    {# </div> #}
+    {# </div> #}
+    {# </div> #}
+    {# </div> #}
+    {# <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev"> #}
+    {# <span class="carousel-control-prev-icon" aria-hidden="true"></span> #}
+    {# </a> #}
+    {# <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next"> #}
+    {# <span class="carousel-control-next-icon" aria-hidden="true"></span> #}
+    {# </a> #}
+    {# </div> #}
+    {# </div> #}
+    {# <h5 class="mt-2 fw-light text-white">advances one slide at a time</h5> #}
+    {# </div> #}
 
 
 
