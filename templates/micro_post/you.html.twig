@@ -1,77 +1,42 @@
 {% extends 'base.html.twig' %}
-{% block body %}
 
-    {% block title %}you a bitch{% endblock %}
+    {% block body %}
+        {% block title %}you a bitch{% endblock %}
 
-    <div class="d-flex justify-content-center mt-2 mb-3">
-        <a class="btn text-center btn-primary" href="{{ path('micro_post_new') }}">post iets nieuws</a>
-    </div>
-    <div class="text-center">
-        <h1 class="text-white">
-            Your posts
-        </h1>
-    </div>
-    <div class="container w-25 text-center">
-        <div class="d-flex flex-column-reverse ">
-            {% for micro_post in micro_posts|slice (0, 5) %}
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">@{{ micro_post.user.name }}</h5>
-                        <p class="card-title">{{ micro_post.subject }}</p>
-                        <p>{{ micro_post.date |date('D d M-Y H:m') }}</p>
-                        <p class="card-text">
-                            {{ micro_post.text }}
-                        </p>
-                        <a class="btn btn-primary" href="{{ path('micro_post_show', {'id': micro_post.id}) }}">view</a>
-                    </div>
-                </div>
-                <br>
-            {% else %}
-                <tr>
-                    <td colspan="4">no records found</td>
-                </tr>
-            {% endfor %}
+        <div class="d-flex justify-content-center mt-2 mb-3">
+            <a class="btn text-center btn-primary" href="{{ path('micro_post_new') }}">post iets nieuws</a>
         </div>
-    </div>
-
-    <style>
-        .btn , .btn-primary {
-            font-family: 'Share Tech Mono', monospace !important;
-        }
-    </style>
-{#    <script>#}
-{#        console.log('i am here');#}
-{#    </script>#}
-{#    <div class="d-flex justify-content-center mt-2">#}
-{#        <a class="btn text-center btn-primary" href="{{ path('micro_post_new') }}">post iets nieuws</a>#}
-{#    </div>#}
-{#    <div class="container w-25 text-center">#}
-{#        <div class="d-flex flex-column-reverse ">#}
-{#            {% for micro_post in micro_posts|slice (0, 5) %}#}
-{#                <div class="card">#}
-
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">@{{ micro_post.user.name }}</h5>#}
-{#                        <p class="card-title">{{ micro_post.subject }}</p>#}
-{#                        <p>{{ micro_post.date |date('D d M-Y H:m') }}</p>#}
-{#                        <p class="card-text">#}
-{#                            {{ micro_post.text }}#}
-{#                        </p>#}
-{#                        <a class="btn btn-primary" href="{{ path('micro_post_show', {'id': micro_post.id}) }}">view</a>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <br>#}
-{#            {% else %}#}
-{#                <tr>#}
-{#                    <td colspan="4">no records found</td>#}
-{#                </tr>#}
-{#            {% endfor %}#}
-{#        </div>#}
-{#    </div>#}
-
-{#    <style>#}
-{#        .btn , .btn-primary {#}
-{#            font-family: 'Share Tech Mono', monospace !important;#}
-{#        }#}
-{#    </style>#}
-{% endblock %}
+        <div class="text-center">
+            <h1 class="text-white">
+                Your posts
+            </h1>
+        </div>
+        <div class="container w-25 text-center">
+            <div class="d-flex flex-column-reverse ">
+                {% for micro_post in micro_posts|slice (0, 5) %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@{{ micro_post.user.name }}</h5>
+                            <p class="card-title">{{ micro_post.subject }}</p>
+                            <p>{{ micro_post.date |date('D d M-Y H:m') }}</p>
+                            <p class="card-text">
+                                {{ micro_post.text }}
+                            </p>
+                            <a class="btn btn-primary"
+                               href="{{ path('micro_post_show', {'id': micro_post.id}) }}">view</a>
+                        </div>
+                    </div>
+                    <br>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+            </div>
+        </div>
+        <style>
+            .btn, .btn-primary {
+                font-family: 'Share Tech Mono', monospace !important;
+            }
+        </style>
+    {% endblock %}

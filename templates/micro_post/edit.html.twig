@@ -6,7 +6,7 @@
     <div class="container w-25 text-center form-control">
         <h1 class="text-white">Edit MicroPost</h1>
             {{ include('micro_post/_form.html.twig', {'button_label': 'Update'}) }}
-            <a class="btn btn-info mt-3" href="{{ path('micro_post_index') }}">back to list</a> <br>
+            <a class="btn btn-outline-dark mt-3" href="{{ path('micro_post_index') }}">back to list</a> <br>
             {{ include('micro_post/_delete_form.html.twig') }}
 
     </div>
