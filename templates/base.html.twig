@@ -44,25 +44,32 @@
                                         iets nieuws</a>
                                 </li>
                                 {% if app.user %}
-                                <li><a class="dropdown-item" href="{{ path('micro_post_you') }}">your posts</a></li>
+                                    <li><a class="dropdown-item" href="{{ path('micro_post_you') }}">your posts</a></li>
                                 {% else %}
-                                <li><a class="dropdown-item" href="#">action</a></li>
+                                    <li><a class="dropdown-item" href="#">action</a></li>
                                 {% endif %}
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
+
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
                     {% endif %}
+
                     {% if app.user %}
                         <li class="nav-item">
                             <a class="nav-link btn btn-outline-warning" href="{{ '/logout' }}">Logout </a>
                         </li>
-
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link btn btn-outline-warning" href="{{ '/login' }}">Login</a>
+                        </li>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary nav-link" href="{{ '/admin' }}">Admin</a>
                         </li>
                     {% endif %}
                 </ul>
