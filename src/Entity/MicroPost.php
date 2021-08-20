@@ -7,6 +7,7 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 
 /**
