@@ -4,6 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\MicroPost;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class MicroPostCrudController extends AbstractCrudController
 {
@@ -12,14 +15,13 @@ class MicroPostCrudController extends AbstractCrudController
         return MicroPost::class;
     }
 
-    /*
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('subject'),
+            TextEditorField::new('text'),
         ];
     }
-    */
+
 }

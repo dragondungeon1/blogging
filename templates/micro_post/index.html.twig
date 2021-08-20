@@ -4,12 +4,12 @@
 
 {% block body %}
     <div class="d-flex justify-content-center mt-2">
-        <a class="btn text-center btn-outline-warning" href="{{ path('micro_post_new') }}">post iets nieuws</a>
+        <a class="btn text-center btn-outline-warning" href="{{ path('micro_post_new') }}">Post something new</a>
     </div>
 
     <div class="container w-25 text-center">
         <div class="d-flex flex-column-reverse ">
-            {% for micro_post in micro_posts|slice (0, 5) %}
+            {% for micro_post in micro_posts%}
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">@{{ micro_post.user.name }}</h5>
