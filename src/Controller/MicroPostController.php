@@ -7,10 +7,12 @@ use App\Entity\User;
 use App\Form\MicroPostType;
 use App\Repository\MicroPostRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -18,6 +20,16 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class MicroPostController extends AbstractController
 {
+    private $session;
+    private $em;
+
+    public function __construct(SessionInterface $session, EntityManagerInterface $entityManager)
+    {
+        $this->session = $session;
+        $this->em = $entityManager;
+
+    }
+
     /**
      * @Route("/", name="micro_post_index", methods={"GET"})
      * @param MicroPostRepository $microPostRepository

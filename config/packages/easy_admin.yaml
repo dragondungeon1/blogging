@@ -1,0 +1,10 @@
+easy_admin:
+  entities:
+    # List the entity class name you want to manage
+    User:
+      class: App\Entity\User
+      controller: App\Controller\UserController
+      form:
+        fields:
+          #  Other fields ...
+          - { property: 'password', type: 'password' }

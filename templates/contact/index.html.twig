@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+    <section class="container w-50">
+        <div>
+            {{ form_start(our_form) }}
+            {{ form_widget(our_form) }}
+
+            <input class="btn btn-outline-primary" type="submit" value="Send" />
+
+            {{ form_end(our_form) }}
+        </div>
+    </section>
+    <style>
+        label{
+            color: white !important;
+        }
+    </style>
+{% endblock %}
